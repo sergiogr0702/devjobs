@@ -20,4 +20,6 @@ class Vacante extends Model
         'publicado',
         'user_id'
     ];
+
+    protected $casts = [ 'ultimo_dia'=>'date'];
 }
