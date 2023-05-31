@@ -12,7 +12,10 @@ class VacanteController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
+    {     
+        if(auth()->user()->id != 2)
+            abort(403, 'THIS ACTION IS UNAUTHORIZED.');
+        
         return view('vacantes.index');
     }
 
@@ -21,7 +24,18 @@ class VacanteController extends Controller
      */
     public function create()
     {
+        if(auth()->user()->id != 2)
+            abort(403, 'THIS ACTION IS UNAUTHORIZED.');
+
         return view('vacantes.create');
+    }
+
+    /**
+     * Shows the details of the resource.
+     */
+    public function show(Vacante $vacante)
+    {
+        return view('vacantes.show', ['vacante' => $vacante]);
     }
 
     /**
