@@ -15,8 +15,9 @@
                     </p>
                 </div>
                 <div class="flex flex-col md:flex-row items-stretch gap-3 mt-4 md:mt-0">
-                    <a href="#" class="bg-slate-700 py-2 px-4 text-white text-sx font-bold uppercase rounded-lg text-center hover:bg-slate-900">
-                        Candidatos
+                    <a href="{{ route('candidatos.index', $vacante) }}" class="bg-slate-700 py-2 px-4 text-white text-sx font-bold uppercase rounded-lg text-center hover:bg-slate-900">
+                        {{ $vacante->candidatos->count() }}
+                        @choice('Candidato|Candidatos', $vacante->candidatos->count())
                     </a>
 
                     <a href="{{ route('vacantes.edit', $vacante) }}" class="bg-blue-700 py-2 px-4 text-white text-sx font-bold uppercase rounded-lg text-center hover:bg-blue-900">

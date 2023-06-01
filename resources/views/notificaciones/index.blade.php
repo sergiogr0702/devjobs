@@ -11,27 +11,28 @@
                 <div class="p-6 text-gray-900">
                     <h1 class="text-2xl text-center mb-10 font-bold">Mis notificaciones</h1>
 
-                    @forelse ($notificaciones as $notificacion)
-                        <div class="p-5 border border-gray-200 md:flex md:justify-between md:items-center">
-                            <div>
-                                <p>Tienes un nuevo candidato en:
-                                    <span class="font-bold">{{ $notificacion->data['nombre_vacante'] }}</span>
-                                </p>
+                    <div class="divide-y divide-gray-200">
+                        @forelse ($notificaciones as $notificacion)
+                            <div class="p-5 md:flex md:justify-between md:items-center">
+                                <div>
+                                    <p>Tienes un nuevo candidato en:
+                                        <span class="font-bold">{{ $notificacion->data['nombre_vacante'] }}</span>
+                                    </p>
 
-                                <p>Hace
-                                    <span class="font-bold">{{ $notificacion->created_at->diffForHumans() }}</span>
-                                </p>
+                                    <p>Hace
+                                        <span class="font-bold">{{ $notificacion->created_at->diffForHumans() }}</span>
+                                    </p>
+                                </div>
+                                <div class="mt-5 md:mt:0">
+                                    <a href="{{ route('candidatos.index', $notificacion->data['id_vacante']) }}" class="bg-indigo-600 p-3 text-sm uppercase font-bold text-white rounded-lg">
+                                        Ver Candidatos
+                                    </a>
+                                </div>
                             </div>
-                            <div class="mt-5 md:mt:0">
-                                <a href="#" class="bg-indigo-600 p-3 text-sm uppercase font-bold text-white rounded-lg">
-                                    Ver Candidatos
-                                </a>
-                            </div>
-                        </div>
-                    @empty
-                        <p class="text-center text-gray-600">No hay notificaciones nuevas</p>
-                    @endforelse
-
+                        @empty
+                            <p class="text-center text-gray-600">No hay notificaciones nuevas</p>
+                        @endforelse
+                    </div>
                 </div>
             </div>
         </div>
